@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RestaurantDAL.Offer>
+@{
+    ViewBag.Title = "GetOffers";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";        
+}
+
+<h2>Offers</h2>
+
+<table border="1" cellpadding="10" cellspacing="10">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Valid Till</th>
+            <th>Valid From</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <td>@item.Offer_name</td>
+            <td>@item.Offer_Desc</td>
+            <td>@item.Offer_Valid_To</td>
+            <td>@item.offer_valid_from</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.Off_Id }, null)</td>
+        </tr>
+    }
+</table>

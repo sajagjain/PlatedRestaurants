@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RestaurantDAL.Food>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>Edit</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+
+
+    <tr>
+        <th>
+            Food Name
+        </th>
+        <th>
+            Food Price
+        </th>
+        <th>
+
+            Cuisine
+        </th>
+        <th>
+            Food_Type
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+
+            <td>@item.Food_Name</td>
+            <td>@item.Food_Price</td>
+            <td>@item.Cuisine</td>
+            <td>@item.Food_Type</td>
+            <td> @Html.ActionLink("Edit your Offers", "Edit", new { id = item.Food_Id }, null)</td>
+        </tr>
+    }
+    </table>
+

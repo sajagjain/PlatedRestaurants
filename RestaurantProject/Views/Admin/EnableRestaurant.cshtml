@@ -1,0 +1,24 @@
+﻿@model RestaurantDAL.Restaurant
+
+@{
+    ViewBag.Title = "EnableRestaurant";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>EnableRestaurant</h2>
+
+
+
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Restaurant Name</th>
+        <th>Restaurant Disable</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Res_Name</td>
+        <td>@Html.ActionLink("Enable", "EnableRestaurant", new { resId = Model.Res_Id }, null)</td>
+    </tr>
+
+</table>

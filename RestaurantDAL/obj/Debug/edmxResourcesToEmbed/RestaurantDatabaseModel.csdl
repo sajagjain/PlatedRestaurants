@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="restaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_Id" />
+    </Key>
+    <Property Name="Admin_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="Binary" MaxLength="64" FixedLength="true" Nullable="false" />
+    <Property Name="Res_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.fk_res_id" FromRole="Admin" ToRole="Restaurant" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="No_Of_People" Type="Int32" />
+    <Property Name="Contact_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Special_Request" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Order_Id" Type="Int32" />
+    <Property Name="Booking_Time_And_Date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Time_Arrival" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Time_Departure" Type="DateTime" Precision="7" />
+    <Property Name="Table_No" Type="Int32" Nullable="false" />
+    <Property Name="Booking_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer_Id" Type="Int32" />
+    <Property Name="res_id" Type="Int32" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK__Booking__res_id__239E4DCF" FromRole="Booking" ToRole="Restaurant" />
+    <NavigationProperty Name="Orders" Relationship="Self.fk_bid_for_order" FromRole="Booking" ToRole="Order" />
+    <NavigationProperty Name="Order" Relationship="Self.fk_order_id_for_booking" FromRole="Booking" ToRole="Order" />
+    <NavigationProperty Name="Customer" Relationship="Self.fk_res_id_for_booking" FromRole="Booking" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Strike1" Type="Boolean" Nullable="false" />
+    <Property Name="Strike2" Type="Boolean" Nullable="false" />
+    <Property Name="Strike3" Type="Boolean" Nullable="false" />
+    <Property Name="wallet_id" Type="Int32" />
+    <Property Name="Customer_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.fk_res_id_for_booking" FromRole="Customer" ToRole="Booking" />
+    <NavigationProperty Name="Wallet" Relationship="Self.FK__Customer__wallet__49C3F6B7" FromRole="Customer" ToRole="Wallet" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="En_id" />
+    </Key>
+    <Property Name="En_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Enquiry_Desc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Res_Id" Type="Int32" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.fk_res_id_for_enquiry" FromRole="Enquiry" ToRole="Restaurant" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EV_ID" />
+    </Key>
+    <Property Name="EV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Event_Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Event_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Event_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Res_Id" Type="Int32" />
+    <Property Name="event_time" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.fk_res_id_for_event" FromRole="Event" ToRole="Restaurant" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Feedback1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Res_Id" Type="Int32" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.fk_res_id_for_feedback" FromRole="Feedback" ToRole="Restaurant" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Food_Id" />
+    </Key>
+    <Property Name="Food_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Food_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Food_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Veg_NonVeg" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cuisine" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="res_id" Type="Int32" />
+    <Property Name="Food_Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Food_Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK__Food__res_id__286302EC" FromRole="Food" ToRole="Restaurant" />
+    <NavigationProperty Name="Orders" Relationship="Self.fk_food_id_for_order" FromRole="Food" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="Notify_Id" />
+    </Key>
+    <Property Name="Notify_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Notify_From" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Notify_From_Id" Type="Int32" />
+    <Property Name="Notify_To" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Notify_To_Id" Type="Int32" />
+    <Property Name="Notify_Head" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Notify_Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Notify_Time" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="Off_Id" />
+    </Key>
+    <Property Name="Off_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Offer_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Offer_Desc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Offer_Valid_To" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Res_Id" Type="Int32" />
+    <Property Name="offer_valid_from" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.fk_res_id_for_offer" FromRole="Offers" ToRole="Restaurant" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="BID" Type="Int32" />
+    <Property Name="Food_Id" Type="Int32" />
+    <NavigationProperty Name="Booking" Relationship="Self.fk_bid_for_order" FromRole="Order" ToRole="Booking" />
+    <NavigationProperty Name="Bookings" Relationship="Self.fk_order_id_for_booking" FromRole="Order" ToRole="Booking" />
+    <NavigationProperty Name="Food" Relationship="Self.fk_food_id_for_order" FromRole="Order" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Res_Id" />
+    </Key>
+    <Property Name="Res_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Res_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Res_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Res_City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Res_No_Of_Tables" Type="Byte" Nullable="false" />
+    <Property Name="Res_Capacity" Type="Int16" Nullable="false" />
+    <Property Name="Do_Parties" Type="Boolean" Nullable="false" />
+    <Property Name="Owner_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Owner_Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Owner_MobileNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="wallet_id" Type="Int32" />
+    <Property Name="Res_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admins" Relationship="Self.fk_res_id" FromRole="Restaurant" ToRole="Admin" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__res_id__239E4DCF" FromRole="Restaurant" ToRole="Booking" />
+    <NavigationProperty Name="Enquiries" Relationship="Self.fk_res_id_for_enquiry" FromRole="Restaurant" ToRole="Enquiry" />
+    <NavigationProperty Name="Events" Relationship="Self.fk_res_id_for_event" FromRole="Restaurant" ToRole="Event" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.fk_res_id_for_feedback" FromRole="Restaurant" ToRole="Feedback" />
+    <NavigationProperty Name="Foods" Relationship="Self.FK__Food__res_id__286302EC" FromRole="Restaurant" ToRole="Food" />
+    <NavigationProperty Name="Offers" Relationship="Self.fk_res_id_for_offer" FromRole="Restaurant" ToRole="Offers" />
+    <NavigationProperty Name="Wallet" Relationship="Self.FK__Restauran__walle__4AB81AF0" FromRole="Restaurant" ToRole="Wallet" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TransactionTable">
+    <Key>
+      <PropertyRef Name="Trans_Id" />
+    </Key>
+    <Property Name="Trans_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Trans_From" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Trans_From_Id" Type="Int32" />
+    <Property Name="Trans_To" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Trans_To_Id" Type="Int32" />
+    <Property Name="Trans_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Trans_Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Trans_Time" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="Wallet_Id" />
+    </Key>
+    <Property Name="Wallet_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Wallet_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Last_Trans_Date_And_Time" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__wallet__49C3F6B7" FromRole="Wallet" ToRole="Customer" />
+    <NavigationProperty Name="Restaurants" Relationship="Self.FK__Restauran__walle__4AB81AF0" FromRole="Wallet" ToRole="Restaurant" />
+  </EntityType>
+  <Association Name="fk_res_id">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Res_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__res_id__239E4DCF">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="res_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_bid_for_order">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_id_for_booking">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Order_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_res_id_for_booking">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__wallet__49C3F6B7">
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="Wallet_Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="wallet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_res_id_for_enquiry">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Enquiry" Type="Self.Enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Enquiry">
+        <PropertyRef Name="Res_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_res_id_for_event">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Res_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_res_id_for_feedback">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Res_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Food__res_id__286302EC">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="res_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_food_id_for_order">
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="Food_Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Food_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_res_id_for_offer">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+    <End Role="Offers" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Res_Id" />
+      </Principal>
+      <Dependent Role="Offers">
+        <PropertyRef Name="Res_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restauran__walle__4AB81AF0">
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="0..1" />
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="Wallet_Id" />
+      </Principal>
+      <Dependent Role="Restaurant">
+        <PropertyRef Name="wallet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="restaurantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Enquiries" EntityType="Self.Enquiry" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="Foods" EntityType="Self.Food" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Offers" EntityType="Self.Offer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TransactionTables" EntityType="Self.TransactionTable" />
+    <EntitySet Name="Wallets" EntityType="Self.Wallet" />
+    <AssociationSet Name="fk_res_id" Association="Self.fk_res_id">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__res_id__239E4DCF" Association="Self.FK__Booking__res_id__239E4DCF">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_bid_for_order" Association="Self.fk_bid_for_order">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_id_for_booking" Association="Self.fk_order_id_for_booking">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_res_id_for_booking" Association="Self.fk_res_id_for_booking">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__wallet__49C3F6B7" Association="Self.FK__Customer__wallet__49C3F6B7">
+      <End Role="Wallet" EntitySet="Wallets" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_res_id_for_enquiry" Association="Self.fk_res_id_for_enquiry">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Enquiry" EntitySet="Enquiries" />
+    </AssociationSet>
+    <AssociationSet Name="fk_res_id_for_event" Association="Self.fk_res_id_for_event">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="fk_res_id_for_feedback" Association="Self.fk_res_id_for_feedback">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Food__res_id__286302EC" Association="Self.FK__Food__res_id__286302EC">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Food" EntitySet="Foods" />
+    </AssociationSet>
+    <AssociationSet Name="fk_food_id_for_order" Association="Self.fk_food_id_for_order">
+      <End Role="Food" EntitySet="Foods" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="fk_res_id_for_offer" Association="Self.fk_res_id_for_offer">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="Offers" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restauran__walle__4AB81AF0" Association="Self.FK__Restauran__walle__4AB81AF0">
+      <End Role="Wallet" EntitySet="Wallets" />
+      <End Role="Restaurant" EntitySet="Restaurants" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

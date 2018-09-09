@@ -1,0 +1,117 @@
+﻿@model IEnumerable<RestaurantDAL.Booking>
+
+@{
+    ViewBag.Title = "ViewBookings";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div style="margin-left:50px;margin-right:50px; margin-top:50px">
+            <div class="jumbotron well" style="background-color:white;font-size:smaller">
+                <div class="table-responsive">
+
+
+
+
+
+
+                    <h2 align="center">Bookings</h2>
+
+                    <table class="table table-hover" border="1" cellpadding="2" cellspacing="2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking ID</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">No. of people</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Special Request</th>
+
+                                <th scope="col">Booking Time and Date</th>
+                                <th scope="col">Time Arrival</th>
+                                <th scope="col">Time Departure</th>
+                                <th scope="col">Table no.</th>
+                                <th scope="col">Booking Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+
+                                    <td>
+                                        @item.BID
+                                    </td>
+
+
+
+                                    <td>
+                                        @item.Customer_Name
+                                    </td>
+
+
+
+                                    <td>
+                                        @item.No_Of_People
+                                    </td>
+
+
+                                    <td>
+                                        @item.Contact_No
+                                    </td>
+
+
+                                    <td>
+                                        @item.Special_Request
+
+
+
+                                    <td>
+                                        @item.Booking_Time_And_Date
+                                    </td>
+
+
+                                    <td>
+                                        @item.Time_Arrival
+                                    </td>
+
+
+                                    <td>
+                                        @item.Time_Departure
+                                    </td>
+
+
+                                    <td>
+                                        @item.Table_No
+
+
+                                    <td>
+                                        @item.Booking_Status
+                                    </td>
+
+
+
+
+                                </tr>
+
+                            }
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RestaurantDAL.Event>
+@{
+    ViewBag.Title = "GetEvents";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>Events</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Event_Name</td>
+            <td>@item.Event_Description</td>
+            <td>@item.Event_date</td>
+            <td>@item.event_time</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.EV_ID }, null)</td>
+        </tr>
+    }
+</table>
+
+

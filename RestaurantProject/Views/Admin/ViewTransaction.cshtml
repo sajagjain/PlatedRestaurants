@@ -1,0 +1,105 @@
+﻿@model RestaurantDAL.TransactionTable
+
+@{
+    ViewBag.Title = "ViewTransaction";
+    Layout = "~/Views/Shared/_Layout_Admin_With_Back.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+  
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+       <div style="margin-left:100px;margin-right:100px; margin-top:50px">
+            <div class="jumbotron well" style="background-color:white; border:groove; font-size:medium">
+
+
+
+
+
+                <h2 align="center">Transaction</h2>
+
+                <hr />
+                <dl class="dl-horizontal">
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-2" >
+                            <dt>
+                                @Html.LabelFor(model => model.Trans_From, "TransactionFrom")
+                            </dt>
+                        </div>
+                        <div class="col pull-left">
+                            <dd>
+                                @Html.DisplayFor(model => model.Trans_From)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-2">
+                            <dt>
+                                @Html.LabelFor(model => model.Trans_To, "TransactionTo")
+                            </dt>
+                        </div>
+                        <div class="col pull-left" >
+                            <dd>
+                                @Html.DisplayFor(model => model.Trans_To)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-2">
+                            <dt>
+                                @Html.LabelFor(model => model.Trans_Amount, "TransactionAmount")
+                            </dt>
+                        </div>
+
+                        <div class="col pull-left">
+                            <dd>
+                                @Html.DisplayFor(model => model.Trans_Amount)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-2">
+                            <dt>
+                                @Html.LabelFor(model => model.Trans_Type, "TransactionType")
+                            </dt>
+                        </div>
+
+                        <div class="col pull-left">
+                            <dd>
+                                @Html.DisplayFor(model => model.Trans_Type)
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-2">
+                            <dt>
+                                @Html.LabelFor(model => model.Trans_Time, "TransactionTime")
+                            </dt>
+                        </div>
+                        <div class="col pull-left">
+                            <dd>
+                                @Html.DisplayFor(model => model.Trans_Time)
+                            </dd>
+                        </div>
+                    </div>
+                </dl>
+
+
+
+
+            </div>
+        </div>
+    }
+</body>
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model RestaurantDAL.Restaurant
+
+@{
+    ViewBag.Title = "ViewRestaurantDetails";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<script src="~/Scripts/wow.js"></script>
+<link href="~/Content/Animate.css" rel="stylesheet" />
+<script>
+    new WOW().init();
+</script>
+<h2 class="wow bounceOut">ViewRestaurantDetails</h2>
+
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Restaurant Name</th>
+
+        <th>Restaurant Address</th>
+        <th>Restaurant city</th>
+        <th>Owner Name</th>
+        <th>Owner Email</th>
+        <th>Restaurant no of tables</th>
+        <th>Restaurant capacity</th>
+        <th>Disable</th>
+        <th>Enable</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Res_Name</td>
+
+        <td>@Model.Res_Address</td>
+        <td>@Model.Res_City</td>
+        <td>@Model.Owner_Name</td>
+        <td>@Model.Owner_Email</td>
+        <td>@Model.Res_No_Of_Tables</td>
+        <td>@Model.Res_Capacity</td>
+        <td>@Html.ActionLink("Disable Restaurant", "DisableRestaurant", new { resId = Model.Res_Id }, null) </td>
+        <td>@Html.ActionLink("Enable Restaurant", "EnableRestaurant", new { resId = Model.Res_Id }, null) </td>
+
+
+    </tr>
+
+</table>
+

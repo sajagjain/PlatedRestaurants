@@ -1,0 +1,21 @@
+﻿@model Exception
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAboutAndContact.cshtml";
+}
+
+
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-danger">Error.</h1>
+        <h3 class="text-danger">An error occurred while processing your request.</h3>
+        <h4> @Model.Message</h4>
+        <h4>@Model.Source</h4>
+        
+    </div>
+</div>
+
+
+

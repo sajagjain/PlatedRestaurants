@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+
+    <link href="~/Content/Animate.css" rel="stylesheet" />
+    <script src="~/Scripts/wowmin.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+
+    <script src="js/script.js" type="text/javascript"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+
+    <style>
+
+
+
+        #footer {
+            background: #44433f !important;
+        }
+
+            #footer h5 {
+                padding-bottom: 6px;
+                margin-bottom: 20px;
+                color: #ffffff;
+            }
+
+            #footer a {
+                color: #ffffff;
+                text-decoration: none !important;
+                background-color: transparent;
+            }
+
+            #footer ul.social li {
+                padding: 3px 0;
+            }
+
+                #footer ul.social li a i {
+                    margin-right: 5px;
+                    font-size: 25px;
+                    -webkit-transition: .5s all ease;
+                    -moz-transition: .5s all ease;
+                    transition: .5s all ease;
+                }
+
+                #footer ul.social li:hover a i {
+                    font-size: 30px;
+                    margin-top: -10px;
+                }
+
+                #footer ul.social li a,
+                #footer ul.quick-links li a {
+                    color: #ffffff;
+                }
+
+                    #footer ul.social li a:hover {
+                        color: #eeeeee;
+                    }
+
+            #footer ul.quick-links li {
+                padding: 3px 0;
+                -webkit-transition: .5s all ease;
+                -moz-transition: .5s all ease;
+                transition: .5s all ease;
+            }
+
+                #footer ul.quick-links li:hover {
+                    padding: 3px 0;
+                    margin-left: 5px;
+                    font-weight: 700;
+                }
+
+                #footer ul.quick-links li a i {
+                    margin-right: 5px;
+                }
+
+                #footer ul.quick-links li:hover a i {
+                    font-weight: 700;
+                }
+
+
+        section {
+            padding: 0 30px;
+            padding-bottom: 85px;
+        }
+
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            text-align: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #111;
+                }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color:white;-webkit-box-shadow: 0px 15px 22px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 15px 22px -10px rgba(0,0,0,0.75);
+box-shadow: 0px 15px 22px -10px rgba(0,0,0,0.75);">
+        <div class="container" style="background-color:white">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <b>@Html.ActionLink("Plated", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</b>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    @Html.ActionLink("Login", "Login", "Registration", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Register", "Create", "Registration", null, new { @class = "btn btn-default" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div id="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="container-fluid">
+
+                            <div class=" col-lg-offset-1 col-xs-12 col-sm-4 col-md-4 col-lg-3">
+
+                                @*col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2*@
+                                <h5>Discover</h5>
+                                <ul class="list-unstyled quick-links">
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Top Restaurants</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>reserve For Other</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Dining Rewards</a></li>
+                                    @*<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>*@
+                                </ul>
+                            </div>
+                            <div class=" col-lg-offset-1 col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                                <h5>Plated</h5>
+                                <ul class="list-unstyled quick-links">
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About Us</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Contact Us</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Blog</a></li>
+                                    @*<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Career</a></li>*@
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                                    @*<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>*@
+                                </ul>
+                            </div>
+                            <div class=" col-lg-offset-1 col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                                <h5>More</h5>
+                                <ul class="list-unstyled quick-links">
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Plated for os</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Plated For Android</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Privacy Policy</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Terms of Use</a></li>
+                                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Help And Support</a></li>
+                                    @*<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div calss="row">
+                        <span><a href="javascript:void();"></i>Privacy Policy</a></span>
+                        <span><a href="javascript:void();"></i>Terms Of Use </a></span>
+
+                    </div>*@
+                    <br />
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2">
+                            <ul class="list-unstyled list-inline social text-center">
+                                <li class="list-inline-item"><a href="https://www.facebook.com/Platedrestaurant-214500426046690/?modal=admin_todo_tour" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                @*<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>*@
+                                <li class="list-inline-item"><a href="https://www.instagram.com/platedrestaurants/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                @*<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>*@
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    @*<hr style="width: 65%; color: black; height: 1px; background-color:black;" />*@
+
+
+                    @*<span>OpenTable is part of Booking Holdings, the world leader in online travel and related services.</span>*@
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                            
+                            @*<p style="color:black;" class="h6">&copy All right Reversed.<a class="text-black ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>*@
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+
+        function disableBackButtonAllBrowsers() {
+
+            window.history.forward()
+
+        };
+
+
+        window.onload = disableBackButtonAllBrowsers();
+
+        window.onpageshow = function (evts) {
+
+            if (evts.persisted) {
+
+                disableBackButtonAllBrowsers();
+
+            }
+
+        };
+
+
+
+        window.onunload = function () {
+
+            void (0)
+
+        };
+
+    </script>
+</body>
+</html>

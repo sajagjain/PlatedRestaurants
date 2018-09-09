@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+
+<img class="img-responsive" src="~/ImagesFolder/Icons/restaurant1.JPG" style="width:100%;height:400px" />
+<br />
+<div class="container">
+    
+        <div class="row">
+            <div class="col-md-offset-1 col-sm-4 well">
+                @Html.ActionLink("Restaurant Menu", "ViewRestaurantMenu")
+            </div>
+            <div class="col-md-offset-1 col-sm-4 well">
+                @Html.ActionLink("Restaurant Bookings", "ViewBookings")
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-4 well">
+                @Html.ActionLink("Restaurant Events", "ShowEvents")
+            </div>
+            <div class="col-sm-offset-1 col-sm-4 well">
+                @Html.ActionLink("Restaurant Offers", "ShowOffers")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-4 well">
+                @Html.ActionLink(" Enquiry", "ShowEnquiries")
+            </div>
+            <div class="col-md-offset-1 col-sm-4 well">
+                @Html.ActionLink(" Feedback", "ShowFeedback")
+            </div>
+    
+    </div>
+</div>

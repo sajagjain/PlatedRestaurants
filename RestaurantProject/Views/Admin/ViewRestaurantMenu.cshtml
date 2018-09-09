@@ -1,0 +1,83 @@
+﻿@model IEnumerable<RestaurantDAL.Food>
+@{
+    ViewBag.Title = "ViewRestaurantMenu";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <th colspan="6"><h3>Menu</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Food Name</th>
+                        <th>Food Price</th>
+                        <th>Veg / Non Veg</th>
+                        <th>Food Cuisine</th>
+                        <th>Food Type</th>
+                        <th></th>
+
+
+
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            
+                            <td>@item.Food_Name</td>
+                            <td>@item.Food_Price</td>
+                            <td>@item.Veg_NonVeg</td>
+                            <td>@item.Cuisine</td>
+                            <td>@item.Food_Type</td>
+                            <td>@Html.ActionLink("Report", "SendEmailRestaurantMenu", new { foodId = item.Food_Id }, new { @class = "btn btn-danger btn-md" })</td>
+                        </tr>
+                    }
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!--   Comment   -->
+
+    @*<div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>@item.Food_Name</h3>
+                                <p>@item.Food_Price</p>
+                                <p>@item.Veg_NonVeg</p>
+                                <p>@item.Cuisine</p>
+                                <p>@item.Food_Type</p>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+
+
+                }
+
+            </div>
+        </div>*@
+
+
+}

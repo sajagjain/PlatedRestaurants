@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "ViewEarningReportOfAdmin";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+<div id="chartContainer"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="http://ticket-compare.com/wp-content/themes/ticket-compare/js/jquery.canvasjs.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+                text: "Your Earnings"
+            },
+            axisX: {
+                title: "Month"
+            },
+            axisY: {
+                title: "Earnings"
+            },
+
+            data: [
+            {
+                type: "spline",
+                dataPoints: [
+                { y: 17363, label: "Jan" },
+                { y: 28726, label: "Feb" },
+                { y: 35000, label: "Mar" },
+                { y: 25250, label: "Apr" },
+                { y: 19750, label: "May" },
+                { y: 18850, label: "Jun" },
+                { y: 26700, label: "Jul" },
+                { y: 16000, label: "Aug" },
+                { y: 19000, label: "Sept" },
+                { y: 18000, label: "Oct" },
+                { y: 18000, label: "Nov" },
+                { y: 18000, label: "Dec" }
+                ],
+
+                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+            }
+            ]
+        });
+
+        chart.render();
+    });
+</script>
+

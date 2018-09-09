@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "PaymentWindow";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+
+
+
+<div class="container">
+    <h2>Your Order</h2>
+    <table class="table table-bordered table-hover table-striped">
+
+        <tbody>
+            <tr>
+                <th>Food Item</th>
+                <th>Veg / Non Veg</th>
+                <th>Food Quantity</th>
+                <th>Food Cuisine</th>
+                <th>Price</th>
+                <th>Total Price</th>
+
+            </tr>
+            @{decimal total = 0;}
+            @foreach (var item in ViewBag.OrderList)
+            {
+
+                <tr>
+                    <td>@item.Food.Food_Name</td>
+                    <td>@item.Food.Veg_NonVeg</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Food.Cuisine</td>
+                    <td>@item.Food.Food_Price</td>
+                    @{decimal variable = item.Food.Food_Price * item.Quantity;}
+                    @{ total += variable;}
+                    <td>@variable</td>
+                </tr>
+                        }
+            <tr>
+                <td colspan="5"><b>Total Sum</b></td>
+                <td>@total</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    @{decimal thirtypercent = total * (decimal)0.3;}
+    <div class="jumbotron">
+
+        <h3>Pay @thirtypercent Using @Html.ActionLink("Plated Pay", "Pay", "Wallet", new { resId = (int)ViewBag.resId, BID = (int)ViewBag.BID, totalAmount = @total }, new { @class = "btn btn-warning btn-lg" })</h3>
+    </div>
+</div>
+
+

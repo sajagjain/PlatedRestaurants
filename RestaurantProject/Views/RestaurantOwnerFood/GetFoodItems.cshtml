@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RestaurantDAL.Food>
+@{
+    ViewBag.Title = "GetFoodItems";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>FoodItems</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+    @foreach (var item in Model)
+    {
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Veg/Non-Veg</th>
+        <th>Cuisine</th>
+        <th>Food Type</th>
+        <th>Delete</th>
+    </tr>
+        <tr>
+            <td>@item.Food_Name</td>
+            <td>@item.Food_Price</td>
+            <td>@item.Veg_NonVeg</td>
+            <td>@item.Cuisine</td>
+            <td>@item.Food_Type</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.Food_Id}, null)</td>
+        </tr>
+    }
+</table>

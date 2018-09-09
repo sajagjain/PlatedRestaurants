@@ -1,0 +1,79 @@
+﻿@model RestaurantDAL.Booking
+@{
+    ViewBag.Title = "CreateMyBooking";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+<img class="image-responsive" src="~/ImagesFolder/yellowbackground.jpg" style="width:100%;position:relative" />
+<div class="container" style="margin-top:-250px">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12" style="margin-top:-100px">
+            <div class="" style="background-color:white;border-radius:0px;-webkit-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);padding:30px;">
+                @{
+                    ViewData["resId"] =Model.res_id;
+                    ViewData["custId"] = Model.Customer_Id;
+                 }
+ 
+                @using (Html.BeginForm("CreateMyBooking", "CustomerBooking", new { resId = Model.res_id, custId = Model.Customer_Id }, FormMethod.Post, new { @class = "form-horizontal",role = "form" }))
+                {
+                    <div style="text-align:left; ">
+                    @Html.AntiForgeryToken()
+                    <h2>Create <span class="text-danger">Booking</span></h2>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Customer_Name, "Customer Name", new { @class = "control-label col-md-4",@style="text-align:left;" })
+                        <div class="col-md-8" >
+                            @Html.TextBoxFor(m => m.Customer_Name, new { @class = "form-control",@value = Model.Customer_Name})
+                            @Html.ValidationMessageFor(model => model.Customer_Name, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Contact_No, "Mobile Number", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Contact_No, new { @class = "form-control", @value = Model.Contact_No, @type = "number", @min = "6000000000", @max = "9999999999", @pattern = "[0-9]", @required = "required", @title = "Please Enter the correct Mobile Number" })
+                            @Html.ValidationMessageFor(model => model.Contact_No, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.No_Of_People, "No Of People", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.No_Of_People, new { @class = "form-control", @value = 0,@type="number",@min=1,@max=15,@pattern="[0-9]",@required="required" })
+                            @Html.ValidationMessageFor(model => model.No_Of_People, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Time_Arrival, "Arrival Time", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Time_Arrival," ",new { @class = "form-control",@type="datetime",@pattern= "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$",@title= "yyyy-mm-dd hh:mm:ss", @required="required"})
+                            @Html.ValidationMessageFor(model => model.Time_Arrival, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Time_Departure, "Departure Time", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Time_Departure," ",new { @class = "form-control", @type = "datetime", @pattern = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$", @title = "yyyy-mm-dd hh:mm:ss" ,@required="required"})
+                            @Html.ValidationMessageFor(model => model.Time_Departure, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Special_Request, "Special Request(If Any)", new { @class = "control-label col-md-4",@type="text",@max=50 })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Special_Request, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Special_Request, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" class="btn btn-danger pull-right" value="Book Table" />
+                        </div>
+                    </div>
+                        </div>
+                }
+
+            </div>
+            </div>
+</div>
+    </div>

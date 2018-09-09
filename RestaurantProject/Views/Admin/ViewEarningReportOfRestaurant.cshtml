@@ -1,0 +1,98 @@
+﻿@model IEnumerable <RestaurantDAL.TransactionTable>
+
+@{
+    ViewBag.Title = "ViewEarningReportOfRestaurant";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <style>
+        body {
+            background-image: url("https://thumbs.dreamstime.com/b/art-italian-homemade-menu-food-background-restaurant-week-home-cooking-59119707.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div style="margin-left:50px;margin-right:50px; margin-top:50px">
+            <div class="jumbotron well" style="background-color:white;font-size:smaller">
+                <div class="table-responsive">
+
+                    <table class="table table-hover" border="1" cellpadding="2" cellspacing="2">
+
+
+                        <h2 align="center">Earning Report of Restaurant </h2>
+
+                        <thead>
+                            <tr>
+
+
+                                <th scope="col">Transaction From</th>
+                                <th scope="col">Transaction From Id</th>
+                                <th scope="col">Transaction To</th>
+                                <th scope="col">Transaction To Id</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Time</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Trans_From
+                                    </td>
+
+                                    <td>
+                                        @item.Trans_From_Id
+                                    </td>
+                                    <td>
+                                        @item.Trans_To
+                                    </td>
+                                    <td>
+                                        @item.Trans_To_Id
+                                    </td>
+                                    <td>
+                                        @item.Trans_Amount
+                                    </td>
+                                    <td>
+                                        @item.Trans_Type
+                                    </td>
+                                    <td>
+                                        @item.Trans_Time
+                                    </td>
+
+                                </tr>
+                            }
+
+                    </table>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+
+
+
+
+

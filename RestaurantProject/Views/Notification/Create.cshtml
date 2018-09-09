@@ -1,0 +1,74 @@
+﻿@model RestaurantDAL.Notification
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+<head>
+    
+   
+    <style>
+        body {
+            background-image: url("https://thumbs.dreamstime.com/b/art-italian-homemade-menu-food-background-restaurant-week-home-cooking-59119707.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+    </style>
+</head>
+<body>
+    
+        <div style="margin-left:190px;margin-right:190px; margin-top:50px">
+            <div class="jumbotron well" style="background-color:white;">
+                <table align="center">
+                    <h2 align="center">Create Notification</h2>
+                    @using (Html.BeginForm())
+
+                {
+
+                    @Html.AntiForgeryToken()
+                    <tr>
+                        <td>  @Html.LabelFor(model => model.Notify_From)</td>
+                        <td>  @Html.TextBoxFor(model => model.Notify_From)</td>
+                    </tr>
+
+                    <tr>
+                        <td> @Html.LabelFor(model => model.Notify_From_Id)</td>
+                        <td> @Html.TextBoxFor(model => model.Notify_From_Id)</td>
+                    </tr>
+
+                    <tr>
+                        <td> @Html.LabelFor(model => model.Notify_To) </td>
+                        <td> @Html.TextBoxFor(model => model.Notify_To)</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.LabelFor(model => model.Notify_To_Id)</td>
+                        <td> @Html.TextBoxFor(model => model.Notify_To_Id)</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.LabelFor(model => model.Notify_Head)</td>
+                        <td> @Html.TextBoxFor(model => model.Notify_Head)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Notify_Description)</td>
+                        <td>@Html.TextBoxFor(model => model.Notify_Description)</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.LabelFor(model => model.Notify_Time)</td>
+                        <td> @Html.TextBoxFor(model => model.Notify_Time)</td>
+                    </tr>
+
+
+
+            }
+                    <tr>
+                        <td><input type="submit" value="Create"/></td>
+                    </tr>
+                </table>
+
+                </div>
+            </div>
+</body>
+
+

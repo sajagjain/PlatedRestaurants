@@ -1,0 +1,114 @@
+﻿@model RestaurantProject.Models.MyAccountModel
+@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+
+<div class="container">
+    <div class="jumbotron well" style="margin-top:50px">
+      
+        <p>@Model.customer.Name</p>
+        <p>@Model.customer.MobileNo</p>
+        <p>My Birthday- @Model.customer.Birthday.ToShortDateString()</p>
+        @if (Model.wallet != null)
+        {
+        <p>Wallet Balance : @Model.wallet.Wallet_Amount</p>
+        <p>Last Transaction Date : @Model.wallet.Last_Trans_Date_And_Time</p>
+        }
+        else
+        {
+            <p>You Dont Have a wallet connected to your Account</p>
+        }
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>My Paid Booking's</h2><span>@Html.ActionLink("View All Booking", "GetAllBookings", "CustomerBooking", new { custId = (int)Session["userId"] }, new { @class = "btn btn-danger btn-md" })</span><hr />
+    <div class="row">
+        @if (Model.activeBookings.Count() > 0)
+        {
+            foreach (var item in Model.activeBookings)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                    <div class="thumbnail">
+                        <div class="caption" style="height:330px">
+                            <h3>@item.Customer_Name</h3>
+                            <img src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px" alt="...">
+                            <p>@item.Contact_No</p>
+                            <p>From - @item.Time_Arrival</p>
+                            <p>To - @item.Time_Departure</p>
+                            <p>Your Special Request - @item.Special_Request</p>
+
+                            <p>@Html.ActionLink("Contact Restaurant", "Create", "CustomerEnquiry", new { resId = item.res_id }, new { @class = "btn btn-danger btn-md" })</p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="jumbotron">No Paid Bookings Available</div>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <h2>Your Active Booking's</h2><span>@Html.ActionLink("View All Booking", "GetAllBookings", "CustomerBooking", new { custId = (int)Session["userId"] }, new { @class = "btn btn-danger btn-md" })</span><hr />
+    <div class="row">
+        @if (Model.orderPlacedBooking.Count() > 0)
+        {
+            foreach (var item in Model.orderPlacedBooking)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                    <div class="thumbnail">
+                        <div class="caption" style="height:330px">
+                            <h3>@item.Customer_Name</h3>
+                            <img src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px" alt="...">
+                            <p>@item.Contact_No</p>
+                            <p>From - @item.Time_Arrival</p>
+                            <p>To - @item.Time_Departure</p>
+                            <p>Your Special Request - @item.Special_Request</p>
+                            <p>@Html.ActionLink("Contact Restaurant", "Create", "CustomerEnquiry", new { resId = item.res_id }, new { @class = "btn btn-danger btn-md" })</p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="jumbotron">No Active Bookings Available</div>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <h2>Your Transaction's</h2><hr />
+    <div class="row">
+        @if (Model.transactions.Count() > 0)
+        {
+            foreach (var item in Model.transactions)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                    <div class="thumbnail">
+                        <div class="caption" style="height:330px">
+                            <h3>@item.Trans_From</h3>
+                            <img src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px" alt="...">
+                            <h4>@item.Trans_Time</h4>
+                            <p>@item.Trans_Amount</p>
+                            <p>@item.Trans_Type</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="jumbotron">No Transactions Available</div>
+        }
+    </div>
+</div>
+

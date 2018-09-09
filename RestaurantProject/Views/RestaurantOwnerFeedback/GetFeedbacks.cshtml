@@ -1,0 +1,23 @@
+﻿@model IEnumerable<RestaurantDAL.Feedback>
+@{
+    ViewBag.Title = "GetFeedbacks";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>Feedbacks</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Email</th>
+        <th>Feedback</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>@item.Feedback1</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.FID }, null)</td>
+        </tr>
+    }
+</table>

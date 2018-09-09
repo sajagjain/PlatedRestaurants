@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RestaurantDAL.Event>
+@{
+    ViewBag.Title = "ShowEvents";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<div class="container" style="margin-top:100px">
+    <div class="row">
+        
+        <table class="table table-responsive table-bordered table-hover" style="background-color:white;">
+
+            <thead>
+                <tr>
+                    <th colspan="5"><h2 align="center">Events</h2></th>
+                </tr>
+            </thead>
+            <tr>
+                <td colspan="6" align="center">@Html.ActionLink("CreateEvent", "CreateEvent", "RestaurantMain", new { resId = HttpContext.Current.Session["userId"] }, null)</td>
+            </tr>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Description</th>
+                <th>Event Date</th>
+                <th>Event time</th>
+
+                <th>Delete</th>
+
+
+
+
+            </tr>
+            @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.Event_Name</td>
+            <td>@item.Event_Description</td>
+            <td>@item.Event_date.ToShortDateString()</td>
+            <td>@item.event_time</td>
+            <td>@Html.ActionLink("Delete", "Delete", "RestaurantOwnerEvent", new { id = item.EV_ID }, null)</td>
+
+        </tr>
+}
+
+            <tr>
+                <td colspan="6" align="center">@Html.ActionLink("Back To Home", "Index", "RestaurantMain")</td>
+            </tr>
+
+        </table>
+            
+
+        </div>
+
+    </div>
+
+
+

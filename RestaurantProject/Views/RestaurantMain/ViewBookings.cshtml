@@ -1,0 +1,128 @@
+﻿@model RestaurantProject.Models.RestaurantBookingDetailsModel
+
+@{
+    ViewBag.Title = "ViewBooking";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+
+
+
+<div class="container">
+
+    <h2 class="text-danger">Order Placed Bookings</h2>
+    <hr />
+    <div class="row">
+        @foreach (var item in @Model.OrderPlaced)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:35px">
+                <div class="thumbnail">
+                    <img style="padding:10px" src="~/ImagesFolder/restaurant.png" alt="...">
+                    <div class="caption" style="height:300px">
+                        <h4 style="font-size:15px">@item.Restaurant.Res_Name</h4>
+                        <h4 style="font-size:15px">@item.Customer_Name</h4>
+                        <p style="font-size:10px">No Of People - @item.No_Of_People</p>
+                        <p style="font-size:10px;">@item.Contact_No</p>
+                        <p style="font-size:10px;color:dimgrey">Special Request - @item.Special_Request</p>
+                        <p style="font-size:10px;color:dimgrey">Arrival Time - @item.Time_Arrival</p>
+                        <p style="font-size:10px;color:dimgrey">Departure Time - @item.Time_Departure</p>
+                        <p>@Html.ActionLink("View Details", "ViewOrderDetails", "RestaurantMain", new { bid = @item.BID }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.OrderPlaced.Count <= 0)
+        {
+            <p style="margin-left:30px">No Order Placed Bookings Available</p>
+        }
+    </div>
+
+    <h2 class="text-danger">Active Bookings</h2>
+    <hr />
+    <div class="row">
+        @foreach (var item in @Model.ActiveBookings)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:35px">
+                <div class="thumbnail">
+                    <img style="padding:10px" src="~/ImagesFolder/restaurant.png" alt="...">
+                    <div class="caption" style="height:300px">
+                        <h4 style="font-size:15px">@item.Restaurant.Res_Name</h4>
+                        <h4 style="font-size:15px">@item.Customer_Name</h4>
+                        <p style="font-size:10px">@item.No_Of_People</p>
+                        <p style="font-size:10px;">@item.Contact_No</p>
+                        <p style="font-size:10px;color:dimgrey">Special Request - @item.Special_Request</p>
+                        <p style="font-size:10px;color:dimgrey">Arrival Time - @item.Time_Arrival</p>
+                        <p style="font-size:10px;color:dimgrey">Departure Time - @item.Time_Departure</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.ActiveBookings.Count <= 0)
+        {
+            <p style="margin-left:30px">No Active Bookings Available</p>
+        }
+    </div>
+
+    <h2 class="text-danger">Pending Bookings</h2>
+    <hr />
+    <div class="row">
+        @foreach (var item in @Model.PendingBookings)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:35px">
+                <div class="thumbnail">
+                    <img style="padding:10px" src="~/ImagesFolder/restaurant.png" alt="...">
+                    <div class="caption" style="height:300px">
+                        <h4 style="font-size:15px">@item.Restaurant.Res_Name</h4>
+                        <h4 style="font-size:15px">@item.Customer_Name</h4>
+                        <p style="font-size:10px;">@item.Contact_No</p>
+                        <p style="font-size:10px">No Of People - @item.No_Of_People</p>
+                        <p style="font-size:10px;color:dimgrey">Special Request - @item.Special_Request</p>
+                        <p style="font-size:10px;color:dimgrey">Arrival Time - @item.Time_Arrival</p>
+                        <p style="font-size:10px;color:dimgrey">Departure Time - @item.Time_Departure</p>
+                        <p>@Html.ActionLink("Approve", "ApproveBooking", "RestaurantMain", new { bid = @item.BID }, new { @class = "btn btn-danger btn-sm" })
+                        <p>@Html.ActionLink("Cancel", "CancelBooking", "RestaurantMain", new { bid = @item.BID }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.PendingBookings.Count <= 0)
+        {
+            <p style="margin-left:30px">No Pending Bookings Available</p>
+        }
+
+    </div>
+
+    <h2 class="text-danger">Completed Bookings</h2>
+    <hr />
+    <div class="row">
+        @foreach (var item in @Model.CompletedBookings)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:35px">
+                <div class="thumbnail">
+                    <img style="padding:10px" src="~/ImagesFolder/restaurant.png" alt="...">
+                    <div class="caption" style="height:300px">
+                        <h4 style="font-size:15px">@item.Restaurant.Res_Name</h4>
+                        <h4 style="font-size:15px">@item.Customer_Name</h4>
+                        <p style="font-size:10px">No Of People - @item.No_Of_People</p>
+                        <p style="font-size:10px;">@item.Contact_No</p>
+                        <p style="font-size:10px;color:dimgrey">Special Request - @item.Special_Request</p>
+                        <p style="font-size:10px;color:dimgrey">Arrival Time - @item.Time_Arrival</p>
+                        <p style="font-size:10px;color:dimgrey">Departure Time - @item.Time_Departure</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.CompletedBookings.Count <= 0)
+        {
+            <p style="margin-left:30px">No Completed Bookings Available</p>
+        }
+    </div>
+
+    
+</div>
+
+
+
+

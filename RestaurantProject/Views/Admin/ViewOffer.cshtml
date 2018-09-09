@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RestaurantDAL.Offer>
+@{
+    ViewBag.Title = "ViewOffer";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead>
+                    <tr>
+                        <td colspan="5" align="center"><h3>Offers</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Offer Name</th>
+                        <th>Offer Description</th>
+                        <th>Offer Valid To</th>
+                        <th>Offer Valid From</th>
+                        <th></th>
+
+
+
+
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.Offer_name</td>
+                            <td>@item.Offer_Desc</td>
+                            <td>@item.Offer_Valid_To</td>
+                            <td>@item.offer_valid_from</td>
+                            <td>@Html.ActionLink("Report", "SendEmail", new { offId = item.Off_Id }, new { @class = "btn btn-danger btn-md" }) </td>
+
+                        </tr>
+                    }
+
+            </table>
+
+        </div>
+
+    </div>
+
+}
+
+
+
+

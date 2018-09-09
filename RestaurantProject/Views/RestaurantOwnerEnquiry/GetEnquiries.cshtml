@@ -1,0 +1,24 @@
+﻿@model IEnumerable<RestaurantDAL.Enquiry>
+@{
+    ViewBag.Title = "GetEnquiries";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>Enquiries</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Description</th>
+        <th>Phone Number</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Enquiry_Desc</td>
+            <td>@item.Phone_No</td>
+            <td>@Html.ActionLink("Delete", "Delete","RestaurantOwnerEnquiry", new { id = item.En_id }, null)</td>
+        </tr>
+    }
+</table>
+

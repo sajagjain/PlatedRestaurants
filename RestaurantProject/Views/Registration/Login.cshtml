@@ -1,0 +1,94 @@
+﻿@model RestaurantDAL.Customer
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<head>
+    <style>
+        .btn-sm {
+           width: 20%;
+        
+        }
+        .control-label {
+            width: 250px;
+        }
+
+    </style>
+</head>
+<img class="image-responsive" src="~/ImagesFolder/yellowbackground.jpg" style="width:100%;position:relative" />
+<div class="container" style="margin-top:-250px">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12" style="margin-top:-100px">
+            <div class="" style="background-color:white;border-radius:0px;-webkit-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);padding:30px;">
+
+                @using (Html.BeginForm())
+    {
+            @Html.AntiForgeryToken()
+            <center>
+                <h2>Login</h2>
+            </center>
+            <div style="text-align:left; ">
+
+                @*<div class="form-horizontal">
+        <h4>Registration</h4>
+        <hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "email", @pattern = "[a-z0-9@.]{6,50}", @title = "Please Enter the Correct Email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <br /><br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <br /><br />
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input class="btn btn-md btn-danger" style="margin-top:20px" type="submit" value="Login">
+
+                    </div>
+                </div>
+            </div>
+
+}
+
+                @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+                <br /><br />
+                <hr />
+                
+                    @Html.ActionLink("Forget Password?", "ForgetPassword")
+                
+                    New to Plated?
+                    <span>@Html.ActionLink("Create an Account", "Create")</span>
+
+                
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>

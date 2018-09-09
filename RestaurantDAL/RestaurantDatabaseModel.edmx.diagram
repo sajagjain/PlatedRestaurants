@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="506d0f62244a4526943b78436400fb5b" Name="Diagram1">
+        <EntityTypeShape EntityType="restaurantModel.Admin" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Booking" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Customer" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Enquiry" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Event" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Feedback" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Food" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Notification" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Offer" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Order" Width="1.5" PointX="10.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Restaurant" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.TransactionTable" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.Wallet" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="restaurantModel.fk_res_id" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.FK__Booking__res_id__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_bid_for_order" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_order_id_for_booking" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_res_id_for_booking" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.FK__Customer__wallet__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_res_id_for_enquiry" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_res_id_for_event" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_res_id_for_feedback" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.FK__Food__res_id__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_food_id_for_order" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.fk_res_id_for_offer" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantModel.FK__Restauran__walle__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

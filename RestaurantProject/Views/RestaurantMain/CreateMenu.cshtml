@@ -1,0 +1,75 @@
+﻿@model RestaurantDAL.Food
+
+@{
+    ViewBag.Title = "CreateMenu";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+
+<img class="image-responsive" src="~/ImagesFolder/enquiry_background.jpg" style="width:100%;position:relative" />
+<div class="container" style="margin-top:-250px">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12" style="margin-top:-100px">
+            <div class="" style="background-color:white;border-radius:0px;-webkit-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 7px 47px -1px rgba(0,0,0,0.75);padding:30px;">
+
+                @using (Html.BeginForm("CreateMenu", "RestaurantMain", new { resId = Model.res_id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+            @Html.AntiForgeryToken()
+            <h2>Menu <span class="text-danger">Form</span></h2>
+
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Food_Name, "Food name", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Food_Name, new { @class = "form-control",@required="Required" })
+                    @Html.ValidationMessageFor(model => model.Food_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Food_Price, "Food Price", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Food_Price, new { @class = "form-control" ,@required="required" ,@type="number" ,@min="1.00" ,@max="2500"})
+                    @Html.ValidationMessageFor(model => model.Food_Price, "" +
+"", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Veg_NonVeg, "Veg-NonVeg", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Veg_NonVeg, new { @class = "form-control" ,@required="required"})
+                    @Html.ValidationMessageFor(model => model.Veg_NonVeg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Cuisine, "Cuisine", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Cuisine, new { @class = "form-control",@required="required" })
+                    @Html.ValidationMessageFor(model => model.Cuisine, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Food_Type, "Food Type", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Food_Type, new { @class = "form-control",@required="required" })
+                    @Html.ValidationMessageFor(model => model.Food_Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" class="btn btn-danger" style="margin-top:20px;" value="CreateMenu" />
+                </div>
+            </div>
+}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RestaurantDAL.Notification>
+@{
+    ViewBag.Title = "CustomerNotification";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+<div class="container">
+    <div class="padding:20px">
+        <h2 class="text-danger">My Notifications</h2>
+        <hr />
+        <div class="container">
+            @if (Model.Count() > 0)
+            {
+            foreach (var item in Model)
+            {
+            <div class="media well wow slideInUp">
+
+                <!-- You can use media-top, media-middle, or media-bottom -->
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="media-object" src="~/ImagesFolder/Icons/notification.png" style="width:50px;height:50px;"alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" style="color:black">@item.Notify_Head</h4>
+                    <h5>From @item.Notify_From at <b>@item.Notify_Time</b></h5>
+                    <p>@item.Notify_Description</p>
+                    <p>@Html.ActionLink("Delete","DeleteCustomerNotification",new {nid=@item.Notify_Id})</p>
+                </div>
+            </div>
+            }
+            }
+            else
+            {
+                <h3>No Notifications Available</h3>
+            }
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RestaurantDAL.Offer>
+@{
+    ViewBag.Title = "ShowOffers";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+
+   
+</head>
+
+
+
+
+
+
+<div class="container">
+    
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" style="background-color:white">
+
+                <thead>
+
+                    <tr>
+                        <th colspan="5"><h2 align="center">Offers</h2></th>
+                    </tr>
+                </thead>
+                <tr>
+
+                    <td colspan="6" align="center">
+
+                        @Html.ActionLink("CreateOffer", "CreateOffer", "RestaurantMain", new { resId = HttpContext.Current.Session["userId"] }, null)
+                    </td>
+                </tr>
+
+
+                <tbody>
+                    
+                    <tr>
+
+                        <th>Offer Name</th>
+                        <th>Offer Description</th>
+                        <th>Offer Valid To</th>
+                        <th>Offer Valid From</th>
+                        @*<th></th>*@
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Offer_name</td>
+                <td>@item.Offer_Desc</td>
+                <td>@item.Offer_Valid_To</td>
+                <td>@item.offer_valid_from</td>
+
+                @*<td>@Html.ActionLink("Edit", "Edit", "RestaurantOwnerOffer", new { id = item.Off_Id }, null)</td>*@
+                <td>@Html.ActionLink("Delete", "Delete", "RestaurantOwnerOffer", new { id = item.Off_Id }, null)</td>
+
+            </tr>
+}
+
+                    <tr>
+                        <td colspan="6" align="center">@Html.ActionLink("Back To Home", "Index", "RestaurantMain")</td>
+                    </tr>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>

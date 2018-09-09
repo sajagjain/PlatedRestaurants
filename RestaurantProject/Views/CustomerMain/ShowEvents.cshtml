@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RestaurantDAL.Event>
+@{
+    ViewBag.Title = "ShowEvents";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+<img src="~/ImagesFolder/show_all_events_background.jpg" style="width:100%;" class="img-responsive"/>
+<div class="container">
+    <h1 style="margin-top:-200px;color:white"><b>Events</b></h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <img src=@Url.Content(@item.Event_Image) alt="...">
+                    <div class="caption" style="height:330px">
+                        <h3>@item.Event_Name</h3>
+                        <p style="font-size:12px">On @item.Event_date at @item.event_time</p>
+                        <p>@item.Event_Description</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

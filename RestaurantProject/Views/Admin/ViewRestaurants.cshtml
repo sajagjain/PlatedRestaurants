@@ -1,0 +1,103 @@
+﻿@model IEnumerable<RestaurantDAL.Restaurant>
+
+@{
+    ViewBag.Title = "ViewRestaurants";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style=" margin-top:50px">
+            <div style=" font-size:smaller">
+
+                <div class="table-responsive">
+
+
+
+
+
+
+
+
+                    <table class="table table-hover" border="1" cellpadding="2" cellspacing="2">
+                        <thead>
+                            <tr> <td colspan="10" align="center"><h2>Restaurants</h2></td></tr>
+                            <tr>
+
+                                <th scope="col">Restaurant Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">City</th>
+
+                                <th scope="col">Owner Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Mobile Number</th>
+
+                                <th scope="col">Restaurant Status</th>
+                                <th scope="col">Restaurant Menu</th>
+                                <th scope="col">Restaurant Offers</th>
+                                <th scope="col">Restaurant Details</th>
+                                @*<th scope="col">Restaurant Event</th>*@
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Res_Name
+                                    </td>
+
+                                    <td>
+                                        @item.Res_Address
+                                    </td>
+                                    <td>
+                                        @item.Res_City
+                                    </td>
+
+                                    <td>
+                                        @item.Owner_Name
+                                    </td>
+                                    <td>
+                                        @item.Owner_Email
+                                    </td>
+                                    <td>
+                                        @item.Owner_MobileNo
+                                    </td>
+
+                                    <td>
+                                        @item.Res_Status
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("  Menu", "ViewRestaurantMenu", new { resId = item.Res_Id }, new { @class = "btn btn-danger btn-md" })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("  Offers ", "ViewOffersOfARestaurant", new { resId = item.Res_Id }, new { @class = "btn btn-danger btn-md" })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(" Details", "ViewRestaurantDetails", new { resId = item.Res_Id }, new { @class = "btn btn-danger btn-md" })
+                                    </td>
+                                    @*<td>
+                                            @Html.ActionLink("View Restaurant Event", "ViewRestaurantEvents", new { resId = item.Res_Id }, null)
+                                        </td>*@
+                                </tr>
+                            }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</body>
+

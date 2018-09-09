@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RestaurantDAL.Booking>
+@{
+    ViewBag.Title = "ViewRestaurantBookings";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>Customer Name</th>
+        <th>No Of people</th>
+        <th>Special Request</th>
+        <th>Booking Status</th>
+        <th>Contact No </th>
+        <th>Table No</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Customer_Name</td>
+        <td>@item.No_Of_People</td>
+        <td>@item.Special_Request</td>
+        <td>@item.Booking_Status</td>
+        <td>@item.Contact_No</td>
+        <td>@item.Table_No</td>
+        <td>@Html.ActionLink("Delete", "Delete", new { id = item.res_id }, null)</td>
+    </tr>
+    }
+</table>
+
+
+
+

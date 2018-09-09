@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RestaurantDAL.Offer>
+@{
+    ViewBag.Title = "ShowOffers";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+<img src="~/ImagesFolder/show_all_offers_background.jpg" style="width:100%;" class="img-responsive" />
+
+<div class="container" id="increase-size">
+    <h1 style="margin-top:-200px;color:white"><b>Offers</b></h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <div class="caption" style="height:250px">
+                        <p>At @item.Restaurant.Res_Name</p>
+                        <img class="blackline" src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px;" alt="...">
+                        <h3>@item.Offer_name</h3>
+                        <p>@item.Offer_Desc</p>
+                        <p>@item.offer_valid_from-@item.Offer_Valid_To</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

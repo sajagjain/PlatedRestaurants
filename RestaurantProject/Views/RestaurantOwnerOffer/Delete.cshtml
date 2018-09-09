@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RestaurantDAL.Offer>
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<h2>Delete</h2>
+
+<table border="1" cellpadding="10" cellspacing="10">
+
+    <tr>
+        <th>
+            Offer Name
+        </th>
+        <th>
+            Offer_Description
+        </th>
+        <th>
+
+            Offer Valid From
+        </th>
+        <th>
+            offer Valid Till
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Offer_name</td>
+            <td>@item.Offer_Desc</td>
+            <td>@item.offer_valid_from</td>
+            <td>@item.Offer_Valid_To</td>
+            <td>@Html.ActionLink("Delete your Offers", "Delete", new { id = item.Off_Id }, null)</td>
+        </tr>
+    }
+</table>

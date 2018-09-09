@@ -1,0 +1,150 @@
+﻿@model RestaurantProject.Models.CustomerHomeModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout_Customer.cshtml";
+}
+
+
+
+<img class="img-responsive" src="~/ImagesFolder/background_website.jpg" style="width:100%;" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+
+
+<h2 style="font-family: 'Raleway', sans-serif;text-align:center;margin-top:50px">Featured <span class="text-danger">Restaurant's</span></h2>
+<hr />
+<div class="restaurant-menu">
+    <div class="container wow slideInUp" style="margin-top:50px;">
+        <div class="row">
+            @foreach (var item in Model.restaurants)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:35px">
+                    <div class="thumbnail">
+                        <img style="padding:10px" src="~/ImagesFolder/restaurant.png" alt="...">
+                        <div class="caption" style="height:200px">
+                            <h4 style="font-size:15px">@item.Res_Name</h4>
+                            <p style="font-size:10px">@item.Res_Address</p>
+                            <p style="font-size:10px;color:dimgrey">Capacity - @item.Res_Capacity</p>
+                            <p style="font-size:10px;color:dimgrey">City - @item.Res_City</p>
+                            <p>@Html.ActionLink("View Details", "ShowRestaurantDetails", new { resId = @item.Res_Id }, new { @class = "btn btn-danger btn-sm" })</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container wow slideInUp">
+    <h2>@Html.ActionLink("Offers", "ShowOffers", null, new { style = "color:black;" })</h2><hr />
+
+    <div class="row">
+        @if (Model.offers.Count() > 0)
+        {
+        foreach (var item in Model.offers)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <div class="caption" style="height:250px">
+                        <p>At @item.Restaurant.Res_Name</p>
+                        <img class="blackline" src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px;" alt="...">
+                        <h3>@item.Offer_name</h3>
+                        <p>@item.Offer_Desc</p>
+                        <p>@item.offer_valid_from-@item.Offer_Valid_To</p>
+                    </div>
+                </div>
+            </div>
+        }
+        }
+        else
+        {
+            <div class="container">No Offers Available Right Now</div>
+        }
+    </div>
+</div>
+
+
+<div class="container wow slideInUp">
+    <h2>@Html.ActionLink("Events", "ShowEvents", null, new { style = "color:black;" })</h2><hr />
+    <div class="row">
+        @if (Model.events.Count() > 0)
+        {
+            foreach (var item in Model.events)
+            {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <img src=@Url.Content(@item.Event_Image) style="width:600px;height:150px;" alt="...">
+                    <div class="caption" style="height:330px">
+                        <h3>@item.Event_Name</h3>
+                        <p style="font-size:12px">On @item.Event_date at @item.event_time</p>
+                        <p>@item.Event_Description</p>
+
+                    </div>
+                </div>
+            </div>
+            }
+        }
+        else {
+            <div class="jumbotron">No Events Available Right Now</div>
+        }
+    </div>
+</div>
+
+<div class="container wow slideInUp">
+    <h2>My Paid Booking's</h2><span>@Html.ActionLink("View All Booking", "GetAllBookings", "CustomerBooking",new { custId=(int)Session["userId"]}, new { @class = "btn btn-danger btn-md" })</span><hr />
+    <div class="row">
+        @if (Model.bookings.Count()>0) {
+            foreach (var item in Model.bookings)
+            {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <div class="caption" style="height:330px">
+                        <h3>@item.Customer_Name</h3>
+                        <img src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px" alt="...">
+                        <p>@item.Contact_No</p>
+                        <p>From - @item.Time_Arrival</p>
+                        <p>To - @item.Time_Departure</p>
+                        <p>Your Special Request - @item.Special_Request</p>
+
+                        <p>@Html.ActionLink("Contact Restaurant", "Create", "CustomerEnquiry", new { resId = item.res_id }, new { @class = "btn btn-danger btn-md" })</p>
+
+                    </div>
+                </div>
+            </div>
+            }
+        }else {
+            <div class="jumbotron">No Paid Bookings Available</div>
+        }
+    </div>
+</div>
+
+<div class="container wow slideInUp">
+    <h2>Your Active Booking's</h2><span>@Html.ActionLink("View All Booking","GetAllBookings","CustomerBooking", new { custId = (int)Session["userId"] }, new { @class = "btn btn-danger btn-md" })</span><hr />
+    <div class="row">
+        @if (Model.bookingActive.Count() > 0)
+        {
+        foreach (var item in Model.bookingActive)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top:50px">
+                <div class="thumbnail">
+                    <div class="caption" style="height:330px">
+                        <h3>@item.Customer_Name</h3>
+                        <img src="~/ImagesFolder/blackunderline.png" style="height:5px;width:100px" alt="...">
+                        <p>@item.Contact_No</p>
+                        <p>From - @item.Time_Arrival</p>
+                        <p>To - @item.Time_Departure</p>
+                        <p>Your Special Request - @item.Special_Request</p>
+                        <p>@Html.ActionLink("Contact Restaurant", "Create", "CustomerEnquiry", new { resId = item.res_id }, new { @class = "btn btn-danger btn-md" })</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+        }
+        else {
+            <div class="jumbotron">No Active Bookings Available</div>
+        }
+    </div>
+</div>
+

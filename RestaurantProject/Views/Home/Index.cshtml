@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RestaurantDAL.Restaurant>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<img class="img-responsive" src="~/ImagesFolder/background_website.jpg" style="width:100%;" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+
+
+<h2 style="font-family: 'Raleway', sans-serif;text-align:center;margin-top:50px">Our <span class="text-danger">Belief</span></h2>
+<hr />
+<div class="container">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+        <h4 class="well" style="font-family: 'Raleway', sans-serif;text-align:center;margin-top:10px">Eating has always been a sociable event, from primitive campfire cooking to reclining on lectuli at lavish Greek and Roman banquets. However, although taverns and inns had always existed, the restaurant as an institution didn’t fully emerge until the 17th century. The word “restaurant” initially appeared in the 16th century, meaning a restorative broth, but by 1771 the term had mutated to refer to an “establishment specializing in the sale of restorative foods” as well. Like so much in culinary history, the Parisians owned the sophisticated version of the concept as American and British visitors marveled at the phenomenon.</h4>
+    </div>
+</div>
+
+<div class="container wow slideInUp">
+    <div class="jumbotron text-center" style="background-color:#d9534f;color:white">
+        <h2>Find Your Favourite Restaurant Now</h2>
+        <p>You just have to follow a small formality of creating your account and that is all</p>
+        
+        @Html.ActionLink("Login", "Login", "Registration", null, new { @class = "btn btn-default btn-md  ", @style = "background-color:white;border-radius:0px" })
+        @Html.ActionLink("Register", "Create", "Registration", null, new { @class = "btn btn-default btn-md  ", @style = "background-color:white;border-radius:0px" })
+
+    </div>
+</div>
+
+
+<div class="container wow slideInUp">
+    <div class="jumbotron text-center" style="background-color:#d9534f;color:white">
+        <h2>Join Our Network Of Restaurant</h2>
+        <p>You can register your restaurant with us using a few simple steps. Start By Clicking The Button Below</p>
+        @Html.ActionLink("Register Your Restaurant", "RestCreate", "Registration", null,new { @class = "btn btn-default btn-md",@style="background-color:white;border-radius:0px" })
+
+    </div>
+</div>

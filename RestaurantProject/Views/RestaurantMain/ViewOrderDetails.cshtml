@@ -1,0 +1,136 @@
+﻿ @model IEnumerable<RestaurantDAL.Order>
+    @{
+        ViewBag.Title = "ViewOrderDetails";
+        Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+    }
+
+
+
+    <head>
+
+        <meta name="viewport" content="width=device-width" />
+
+
+        <style>
+            .jumbotron {
+                background-color: white;
+            }
+        </style>
+    </head>
+
+
+    <div class="container" style="margin-top:100px">
+        <div class="row">
+
+
+            @if (Model.ToList().Count() > 0)
+            {
+                <table class="table table-responsive table-bordered table-hover " style="background-color:white">
+
+                    <thead>
+                        <tr>
+                            <th colspan="6"><h2 align="center">Order</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Veg / Non Veg</th>
+                            <th>Food Quantity</th>
+                            <th>Food Cuisine</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+
+                        </tr>
+
+
+
+
+
+
+
+                        @{decimal total = 0;}
+                        @foreach (var item in Model)
+    {
+                    <tr>
+                        <td>@item.Food.Food_Name</td>
+                        <td>@item.Food.Veg_NonVeg</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Food.Cuisine</td>
+                        <td>@item.Food.Food_Price</td>
+                        @{decimal variable = item.Food.Food_Price * item.Quantity;}
+                        @{ total += variable;}
+                        <td>@variable</td>
+                    </tr>
+}
+                        @{decimal thirtypercent = total * (decimal)0.3;}
+                        @{ decimal remainingAmount = total - thirtypercent;}
+                        <tr>
+                            <td colspan="5"><b>Total Amount</b></td>
+                            <td>@total</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>Prepaid Amount</b></td>
+                            <td>@thirtypercent</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>Remaining Amount</b></td>
+                            <td>@remainingAmount</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">@Html.ActionLink("Back To Home", "Index", "RestaurantMain")</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            }
+            else
+            {
+
+                <div class="jumbotron well">
+                    No Feedbacks Available
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+
+
+    <div class="container">
+      
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">Complete This Booking</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Confirmation</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p><h4>Do you want to Complete the Booking</h4></p>
+                    </div>
+                    <div class="modal-footer">
+
+                        <p>@Html.ActionLink("Complete Booking", "CompleteBooking", "RestaurantMain", new { BID = Model.First().BID },new { @class = "btn btn-danger btn-sm" })
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+

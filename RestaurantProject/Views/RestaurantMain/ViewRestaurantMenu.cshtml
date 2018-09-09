@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RestaurantDAL.Food>
+@{
+    ViewBag.Title = "ViewRestaurantMenu";
+    Layout = "~/Views/Shared/_Layout_Restaurant.cshtml";
+}
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+
+  
+</head>
+
+
+<div class="container" style="margin-top:70px">
+    <div class="row">
+        <table class="table table-bordered table-hover" style="background-color:white">
+
+            <thead>
+
+                <tr>
+                    <th colspan="6"><h2 align="center">Restaurant Menu</h2></th>
+                </tr>
+            </thead>
+            <tr>
+
+                <td colspan="6" align="center">
+
+                    @Html.ActionLink("CreateMenu", "CreateMenu", "RestaurantMain", new { resId = HttpContext.Current.Session["userId"] }, null)
+                </td>
+            </tr>
+            <tbody>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Food Price</th>
+                    <th>Veg_NonVeg</th>
+                    <th>Cuisine</th>
+                    <th>Food Type</th>
+
+
+
+
+
+
+                </tr>
+                @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>@item.Food_Name</td>
+                <td>@item.Food_Price</td>
+                <td>@item.Veg_NonVeg</td>
+                <td>@item.Cuisine</td>
+                <td>@item.Food_Type</td>
+
+
+                @*<td>@Html.ActionLink("Edit", "Edit", "RestaurantOwnerEvent", new { id = item.En_id }, null)</td>*@
+
+
+            </tr>
+
+}
+                <tr>
+                    <td colspan="6" align="center">@Html.ActionLink("Back To Home", "Index", "RestaurantMain")</td>
+                </tr>
+        </table> 
+
+
+    </div>
+
+</div>
+
